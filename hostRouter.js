@@ -1,7 +1,7 @@
 const express = require("express");
 const hostRouter = express.Router();
 
-hostRouter.get("/host/add-home", (req, res, next) => {
+hostRouter.get("/add-home", (req, res, next) => {
     res.send(`
         <!DOCTYPE html>
         <html lang="en">
@@ -22,7 +22,7 @@ hostRouter.get("/host/add-home", (req, res, next) => {
     `);
 });
 
-hostRouter.post("/host/add-home", (req, res, next) => {
+hostRouter.post("/add-home", (req, res, next) => {
     console.log(req.body);
     res.send(`
         <!DOCTYPE html>

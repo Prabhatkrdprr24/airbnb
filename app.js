@@ -9,7 +9,7 @@ const storeRouter = require('./storeRouter');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(storeRouter);
-app.use(hostRouter);
+app.use("host", hostRouter);
 
 app.use((req, res, next) => {
     res.statusCode = 404;

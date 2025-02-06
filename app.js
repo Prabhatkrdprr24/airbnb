@@ -1,29 +1,24 @@
+const path = require('path');
+
 const bodyParser = require('body-parser');
 const express = require('express');
 
+const rootDir = require('./util/path-util');
+
 const app = express();
 //Local module
-const hostRouter = require('./hostRouter');
-const storeRouter = require('./storeRouter');
+const hostRouter = require('./routers/hostRouter');
+const storeRouter = require('./routers/storeRouter');
 
+app.use(express.static(path.join(rootDir, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(storeRouter);
-app.use("host", hostRouter);
+app.use("/host", hostRouter);
 
 app.use((req, res, next) => {
     res.statusCode = 404;
-    res.send(`
-        <!DOCTYPE html>
-        <html lang="en">
-            <head>
-                <title>Page Not Found</title>
-            </head>
-            <body>
-                <h1>404 Page not found</h1>
-            </body>
-        </html>
-    `);
+    res.sendFile(path.join(rootDir, 'views', '404.html'));
 });
 
 const PORT = 3001;

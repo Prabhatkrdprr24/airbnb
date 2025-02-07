@@ -1,0 +1,25 @@
+<%- include("partials/head")%>
+    <link rel="stylesheet" href="/styles/output.css">
+</head>
+<body class="bg-gray-100">
+  <%- include("partials/nav")%>
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold text-blue-600 mb-4">Add Your Home</h1>
+    <form action="/host/add-home" method="POST" class="bg-white p-6 rounded shadow-md">
+        <div class="mb-4">
+            <input 
+            type="text" 
+            name="houseName" 
+            placeholder="Name of your home" 
+            class="w-full p-2 border border-gray-300 rounded" />
+        </div>
+        <div>
+            <input 
+            type="submit" 
+            value="Add Home" 
+            class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 cursor-pointer" />
+        </div>
+    </form>
+  </div>
+</body>
+</html>
